@@ -131,13 +131,12 @@ dmypy.json
 # Project specific
 uploads/
 logs/
-*.log
 temp/
 tmp/
 
 # IDE
 .vscode/
-.idea/
+../.idea/
 *.swp
 *.swo
 *~
@@ -152,7 +151,6 @@ ehthumbs.db
 Thumbs.db
 
 # Security
-.env
 .env.local
 .env.production
 secrets.json
