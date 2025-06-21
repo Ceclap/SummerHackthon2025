@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://i.imgur.com/2MV8VzF.png" alt="User Avatar" class="avatar">
+                <h2>Ed Roh</h2>
+                <p>VP Fancy Admin</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                    <li class="nav-section">Data</li>
+                    <li><a href="#"><span class="material-symbols-outlined">group</span> Manage Team</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">contacts</span> Contacts Information</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">receipt_long</span> Invoices Balances</a></li>
+                    <li class="nav-section">Pages</li>
+                    <li><a href="#"><span class="material-symbols-outlined">person</span> Profile Form</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">calendar_today</span> Calendar</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">quiz</span> FAQ Page</a></li>
+                    <li class="nav-section">Charts</li>
+                    <li><a href="#"><span class="material-symbols-outlined">bar_chart</span> Bar Chart</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">pie_chart</span> Pie Chart</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">show_chart</span> Line Chart</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">public</span> Geography Chart</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div>
+                    <h1>DASHBOARD</h1>
+                    <p>Welcome to your dashboard</p>
+                </div>
+                <button class="download-btn"><span class="material-symbols-outlined">download</span> DOWNLOAD REPORTS</button>
+            </header>
+        <div class="ai-search-container">
+            <input type="text" class="ai-search-input" placeholder="Ask our AI assistant anything about your accounting...">
+            <button class="ai-search-button">
+                Ask AI
+            </button>
+        </div>
+            <div class="dashboard-grid">
+                <div class="card large-card">
+                    <div class="card-header">
+                        <div>
+                            <p>Revenue Generated</p>
+                            <h3>$59,342.32</h3>
+                        </div>
+                        <span class="material-symbols-outlined">download</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                <div class="card medium-card">
+                    <h4>Documente Recente</h4>
+                    <div class="document-item">
+                        <span class="material-symbols-outlined">description</span>
+                        <p class="document-name">Factura_Client_01_Nume.pdf</p>
+                        <p class="document-date">2023-10-26</p>
+                        <button class="document-action-btn">Vezi</button>
+                    </div>
+                    <div class="document-item">
+                        <span class="material-symbols-outlined">description</span>
+                        <p class="document-name">Bon_Fiscal_Cheltuieli.jpg</p>
+                        <p class="document-date">2023-10-25</p>
+                        <button class="document-action-btn">Vezi</button>
+                    </div>
+                    <div class="document-item">
+                        <span class="material-symbols-outlined">description</span>
+                        <p class="document-name">Contract_Inchiriere.pdf</p>
+                        <p class="document-date">2023-10-24</p>
+                        <button class="document-action-btn">Vezi</button>
+                    </div>
+                    <div class="document-item">
+                        <span class="material-symbols-outlined">description</span>
+                        <p class="document-name">Extras_de_Cont_Septembrie.pdf</p>
+                        <p class="document-date">2023-10-23</p>
+                        <button class="document-action-btn">Vezi</button>
+                    </div>
+                </div>
+                <div class="card small-card campaign-card">
+                     <h4>Campaign</h4>
+                     <div class="chart-container">
+                        <canvas id="campaignChart"></canvas>
+                     </div>
+                     <p class="campaign-revenue">$48,352 revenue generated</p>
+                     <p class="campaign-info">Includes extra misc expenditures and costs</p>
+                </div>
+                <div class="card small-card sales-qty-card">
+                    <h4>Sales Quantity</h4>
+                     <div class="chart-container">
+                        <canvas id="salesQuantityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

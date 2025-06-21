@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-primary: #141414;
+    --color-secondary: #1E1E1E;
+    --color-accent: #4A90E2;
+    --color-text-primary: #E0E0E0;
+    --color-text-secondary: #A0A0A0;
+    --color-green: #50D1AA;
+    --color-border: #2C2C2C;
+
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-primary);
+    color: var(--color-text-primary);
+    display: flex;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-primary);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color-border);
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sidebar-header .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.sidebar-header p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-nav a .material-symbols-outlined {
+    margin-right: 15px;
+    font-size: 22px;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: var(--color-accent);
+    color: #FFF;
+}
+
+.sidebar-nav .nav-section {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    padding: 10px 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #0d0d0d;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-header h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.main-header p {
+    color: var(--color-text-secondary);
+}
+
+.download-btn {
+    background-color: var(--color-accent);
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-search-container {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+}
+
+.ai-search-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    padding: 10px;
+    outline: none;
+}
+
+.ai-search-input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.ai-search-button {
+    background-color: var(--color-accent);
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: auto auto; 
+    gap: 20px;
+    grid-template-areas:
+        "revenue revenue revenue revenue transactions transactions"
+        "campaign campaign sales-qty sales-qty transactions transactions";
+}
+
+.card, .stat-card {
+    background-color: var(--color-primary);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    min-width: 0;
+}
+
+.stat-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-card .stat-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+}
+.stat-icon.email { background-color: #50D1AA; }
+.stat-icon.sales { background-color: #4A90E2; }
+.stat-icon.clients { background-color: #F5A623; }
+.stat-icon.traffic { background-color: #BD10E0; }
+
+.stat-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.stat-info p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.stat-right .progress-circle {
+    font-size: 12px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-circle span {
+    position: relative;
+    z-index: 2;
+    color: var(--color-green);
+    font-weight: 600;
+}
+
+.progress-circle .value-bar, .progress-circle .first-half-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.progress-circle .value-bar {
+    clip: rect(0, 25px, 50px, 0);
+    border: 4px solid var(--color-green);
+    box-sizing: border-box;
+}
+
+.progress-circle.p14 .value-bar { transform: rotate(50.4deg); }
+.progress-circle.p21 .value-bar { transform: rotate(75.6deg); }
+.progress-circle.p05 .value-bar { transform: rotate(18deg); }
+.progress-circle.p43 .value-bar { transform: rotate(154.8deg); }
+
+
+.large-card { grid-area: revenue; }
+.medium-card { grid-area: transactions; }
+.campaign-card { grid-area: campaign; }
+.sales-qty-card { grid-area: sales-qty; }
+
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.card-header p {
+    color: var(--color-text-secondary);
+}
+.card-header h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.medium-card h4 {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.document-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border);
+    gap: 15px;
+}
+
+.document-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.document-item > .material-symbols-outlined {
+    color: var(--color-text-secondary);
+    margin-right: 15px;
+}
+
+.document-details {
+    flex-grow: 1;
+    min-width: 0; /* Prevenim overflow-ul */
+    flex-shrink: 0;
+}
+
+.document-name {
+    flex-grow: 1;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    white-space: nowrap;       
+    overflow: hidden;          
+    text-overflow: ellipsis;   
+    min-width: 0;
+}
+
+.document-date {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.document-action-btn {
+    background-color: transparent;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: 15px; /* Adaugă spațiu între detalii și buton */
+    flex-shrink: 0;    /* Previne micșorarea butonului */
+}
+
+.document-action-btn:hover {
+    background-color: var(--color-accent);
+    color: #FFF;
+}
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction-id {
+    font-weight: 600;
+    color: var(--color-accent);
+}
+.transaction-user, .transaction-date {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.transaction-amount {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.green-bg {
+    background-color: var(--color-green);
+    color: var(--color-primary);
+}
+
+.campaign-card {
+    text-align: center;
+}
+
+.campaign-card h4 {
+    margin-bottom: 10px;
+}
+
+#campaignChart {
+    margin: 0 auto 10px auto;
+}
+
+.campaign-revenue {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+.campaign-info {
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+}
+
+.campaign-card .chart-container {
+    height: 140px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+        "revenue revenue"
+        "transactions transactions"
+        "campaign sales-qty";
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+        "revenue"
+        "transactions"
+        "campaign"
+        "sales-qty";
+    }
+}
