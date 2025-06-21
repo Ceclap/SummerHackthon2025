@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Помощник Бухгалтера</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: #007bff;
+            color: white;
+        }
+        
+        .tab:hover {
+            background: #0056b3;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .upload-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .file-upload {
+            border: 3px dashed #007bff;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+        
+        .file-upload:hover {
+            border-color: #0056b3;
+            background-color: #e3f2fd;
+        }
+        
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload-label {
+            display: block;
+            font-size: 1.2em;
+            color: #007bff;
+            cursor: pointer;
+        }
+        
+        .file-upload-label:hover {
+            color: #0056b3;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .convert-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+        }
+        
+        .convert-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40,167,69,0.4);
+        }
+        
+        .convert-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .excel-btn {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(23,162,184,0.3);
+        }
+        
+        .excel-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(23,162,184,0.4);
+        }
+        
+        .excel-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .loader {
+            display: none;
+            margin: 30px auto;
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #007bff;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .results {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .result-header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .result-content {
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+        
+        .result-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .confidence-bar {
+            background-color: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+            transition: width 0.5s ease;
+        }
+        
+        .file-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .file-info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+        
+        .file-info-label {
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .file-info-value {
+            font-size: 1.1em;
+            color: #333;
+        }
+        
+        .text-preview {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        
+        .supported-formats {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .supported-formats strong {
+            color: #007bff;
+        }
+        
+        .convert-info {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .convert-info strong {
+            color: #28a745;
+        }
+        
+        .excel-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .excel-info strong {
+            color: #17a2b8;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .file-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Помощник Бухгалтера</h1>
+            <p>Автоматическая классификация документов бухгалтерского учета в Молдове</p>
+        </div>
+        
+        <div class="content">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('analyze')">Анализ документов</button>
+                <button class="tab" onclick="showTab('convert')">Конвертация в PDF</button>
+                <button class="tab" onclick="showTab('excel')">Конвертация в Excel</button>
+            </div>
+            
+            <!-- Вкладка анализа документов -->
+            <div id="analyze-tab" class="tab-content active">
+                <div class="upload-section">
+                    <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="file-upload" onclick="document.getElementById('analyze-file').click()">
+                            <input type="file" name="file" id="analyze-file" accept=".pdf,.png,.jpg,.jpeg,.tiff,.bmp" required>
+                            <label for="analyze-file" class="file-upload-label">
+                                Нажмите для выбора файла или перетащите сюда
+                            </label>
+                        </div>
+                        
+                        <div class="supported-formats">
+                            <strong>Поддерживаемые форматы:</strong> PDF, PNG, JPG, JPEG, TIFF, BMP
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            Сканировать и определить тип
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="loader" id="analyze-loader"></div>
+
+                <div id="results-container">
+                {% if result %}
+                <div class="results">
+                    <div class="result-header">
+                        <h2>Результаты анализа</h2>
+                    </div>
+                    
+                    <div class="result-content">
+                        <div class="result-item">
+                            <h3>Тип документа</h3>
+                            <p><strong>{{ result.doc_type }}</strong></p>
+                            
+                            {% if result.confidence > 0 %}
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: {{ result.confidence }}%"></div>
+                            </div>
+                            <p><small>Уверенность: {{ result.confidence }}%</small></p>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="file-info">
+                            <div class="file-info-item">
+                                <div class="file-info-label">Имя файла</div>
+                                <div class="file-info-value">{{ result.filename }}</div>
+                            </div>
+                            <div class="file-info-item">
+                                <div class="file-info-label">Размер файла</div>
+                                <div class="file-info-value">{{ (result.file_size / 1024) | round(1) }} KB</div>
+                            </div>
+                            <div class="file-info-item">
+                                <div class="file-info-label">Время обработки</div>
+                                <div class="file-info-value">{{ result.processing_time }}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <h3>Распознанный текст</h3>
+                            <div class="text-preview">{{ result.text }}</div>
+                        </div>
+                        
+                        {% if result.all_types %}
+                        <div class="result-item">
+                            <h3>Детальная классификация</h3>
+                            {% for doc_type, config in result.all_types.items() %}
+                            <div style="margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                                <strong>{{ doc_type }}</strong>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" style="width: {{ (config.confidence * 100) | round(1) }}%"></div>
+                                </div>
+                                <small>Уверенность: {{ (config.confidence * 100) | round(1) }}%</small>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                </div>
+            </div>
+            
+            <!-- Вкладка конвертации в PDF -->
+            <div id="convert-tab" class="tab-content">
+                <div class="upload-section">
+                    <form id="convert-form" action="/convert-to-pdf" method="post" enctype="multipart/form-data">
+                        <div class="file-upload" onclick="document.getElementById('convert-file').click()">
+                            <input type="file" name="file" id="convert-file" accept=".png,.jpg,.jpeg,.tiff,.bmp" required>
+                            <label for="convert-file" class="file-upload-label">
+                                Выберите изображение для конвертации в PDF
+                            </label>
+                        </div>
+                        
+                        <div class="convert-info">
+                            <strong>Конвертация изображений в PDF:</strong> PNG, JPG, JPEG, TIFF, BMP → PDF
+                        </div>
+                        
+                        <button type="submit" class="convert-btn" id="convert-btn">
+                            Конвертировать в PDF
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="loader" id="convert-loader"></div>
+            </div>
+            
+            <!-- Вкладка конвертации в Excel -->
+            <div id="excel-tab" class="tab-content">
+                <div class="upload-section">
+                    <form id="excel-form" action="/convert-to-excel" method="post" enctype="multipart/form-data">
+                        <div class="file-upload" onclick="document.getElementById('excel-file').click()">
+                            <input type="file" name="file" id="excel-file" accept=".png,.jpg,.jpeg,.tiff,.bmp" required>
+                            <label for="excel-file" class="file-upload-label">
+                                Выберите изображение с таблицей для конвертации в Excel
+                            </label>
+                        </div>
+                        
+                        <div class="excel-info">
+                            <strong>Конвертация изображений в Excel:</strong> PNG, JPG, JPEG, TIFF, BMP → XLSX<br>
+                            <small>Идеально подходит для таблиц, счетов, отчетов</small>
+                        </div>
+                        
+                        <button type="submit" class="excel-btn" id="excel-btn">
+                            Конвертировать в Excel
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="loader" id="excel-loader"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Переключение вкладок
+        function showTab(tabName) {
+            // Скрываем все вкладки
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Убираем активный класс со всех кнопок
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Показываем нужную вкладку
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Добавляем активный класс к нужной кнопке
+            event.target.classList.add('active');
+        }
+        
+        // Drag and drop для анализа
+        const analyzeFileUpload = document.querySelector('#analyze-tab .file-upload');
+        const analyzeFileInput = document.getElementById('analyze-file');
+        
+        analyzeFileUpload.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            analyzeFileUpload.style.borderColor = '#0056b3';
+            analyzeFileUpload.style.backgroundColor = '#e3f2fd';
+        });
+        
+        analyzeFileUpload.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            analyzeFileUpload.style.borderColor = '#007bff';
+            analyzeFileUpload.style.backgroundColor = '#f8f9fa';
+        });
+        
+        analyzeFileUpload.addEventListener('drop', function(e) {
+            e.preventDefault();
+            analyzeFileUpload.style.borderColor = '#007bff';
+            analyzeFileUpload.style.backgroundColor = '#f8f9fa';
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                analyzeFileInput.files = files;
+                updateFileName(files[0].name, 'analyze');
+            }
+        });
+        
+        analyzeFileInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                updateFileName(e.target.files[0].name, 'analyze');
+            }
+        });
+        
+        // Drag and drop для конвертации в PDF
+        const convertFileUpload = document.querySelector('#convert-tab .file-upload');
+        const convertFileInput = document.getElementById('convert-file');
+        
+        convertFileUpload.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            convertFileUpload.style.borderColor = '#20c997';
+            convertFileUpload.style.backgroundColor = '#e8f5e8';
+        });
+        
+        convertFileUpload.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            convertFileUpload.style.borderColor = '#28a745';
+            convertFileUpload.style.backgroundColor = '#f8f9fa';
+        });
+        
+        convertFileUpload.addEventListener('drop', function(e) {
+            e.preventDefault();
+            convertFileUpload.style.borderColor = '#28a745';
+            convertFileUpload.style.backgroundColor = '#f8f9fa';
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                convertFileInput.files = files;
+                updateFileName(files[0].name, 'convert');
+            }
+        });
+        
+        convertFileInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                updateFileName(e.target.files[0].name, 'convert');
+            }
+        });
+        
+        // Drag and drop для конвертации в Excel
+        const excelFileUpload = document.querySelector('#excel-tab .file-upload');
+        const excelFileInput = document.getElementById('excel-file');
+        
+        excelFileUpload.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            excelFileUpload.style.borderColor = '#138496';
+            excelFileUpload.style.backgroundColor = '#e3f2fd';
+        });
+        
+        excelFileUpload.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            excelFileUpload.style.borderColor = '#17a2b8';
+            excelFileUpload.style.backgroundColor = '#f8f9fa';
+        });
+        
+        excelFileUpload.addEventListener('drop', function(e) {
+            e.preventDefault();
+            excelFileUpload.style.borderColor = '#17a2b8';
+            excelFileUpload.style.backgroundColor = '#f8f9fa';
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                excelFileInput.files = files;
+                updateFileName(files[0].name, 'excel');
+            }
+        });
+        
+        excelFileInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                updateFileName(e.target.files[0].name, 'excel');
+            }
+        });
+        
+        function updateFileName(fileName, type) {
+            const label = document.querySelector(`#${type}-tab .file-upload-label`);
+            if (type === 'analyze') {
+                label.textContent = 'Выбран файл: ' + fileName;
+            } else if (type === 'convert') {
+                label.textContent = 'Выбрано изображение: ' + fileName;
+            } else if (type === 'excel') {
+                label.textContent = 'Выбрано изображение с таблицей: ' + fileName;
+            }
+        }
+        
+        // Form submission для анализа
+        document.getElementById('upload-form').addEventListener('submit', function() {
+            const submitBtn = document.getElementById('submit-btn');
+            const loader = document.getElementById('analyze-loader');
+            const resultsContainer = document.getElementById('results-container');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Обрабатывается...';
+            loader.style.display = 'block';
+            resultsContainer.style.display = 'none';
+        });
+        
+        // Form submission для конвертации в PDF
+        document.getElementById('convert-form').addEventListener('submit', function() {
+            const convertBtn = document.getElementById('convert-btn');
+            const loader = document.getElementById('convert-loader');
+            
+            convertBtn.disabled = true;
+            convertBtn.textContent = 'Конвертируется...';
+            loader.style.display = 'block';
+        });
+        
+        // Form submission для конвертации в Excel
+        document.getElementById('excel-form').addEventListener('submit', function() {
+            const excelBtn = document.getElementById('excel-btn');
+            const loader = document.getElementById('excel-loader');
+            
+            excelBtn.disabled = true;
+            excelBtn.textContent = 'Конвертируется...';
+            loader.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
