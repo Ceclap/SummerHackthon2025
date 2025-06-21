@@ -1,0 +1,119 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Помощник Бухгалтера</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+// ... existing code ...
+        <div id="archive-tab" class="tab-content">
+            <h2>Архив документов</h2>
+            <div class="filter-section">
+                <div class="filter-group">
+// ... existing code ...
+                </div>
+                <button id="filter-btn" class="submit-btn">Применить</button>
+            </div>
+            <div id="archive-list" class="table-container">
+                <!-- Archived documents will be loaded here -->
+            </div>
+            
+            <hr style="margin: 40px 0;">
+
+            <h2>Статистика</h2>
+            <div id="statistics-section" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <div style="width: 45%; min-width: 300px;">
+                    <h3>Документы по статусу</h3>
+                    <canvas id="status-chart"></canvas>
+                </div>
+                <div style="width: 45%; min-width: 300px;">
+                    <h3>Документы по типу</h3>
+                    <canvas id="type-pie-chart"></canvas>
+                </div>
+                <div style="width: 95%; min-width: 300px; margin-top: 20px;">
+                    <h3>Количество по типу</h3>
+                    <canvas id="type-bar-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+// ... existing code ...
+        if (tabName === 'archive-tab') {
+            loadArchiveDocuments();
+            loadStatistics();
+        }
+    }
+
+    // Load statistics for charts
+    async function loadStatistics() {
+        try {
+            const response = await fetch('/statistics');
+            const stats = await response.json();
+
+            // Chart 1: Documents by Status (Pie)
+            new Chart(document.getElementById('status-chart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Валидные', 'С ошибками'],
+                    datasets: [{
+                        label: 'Статус документов',
+                        data: [stats.by_status.valid, stats.by_status.invalid],
+                        backgroundColor: ['#28a745', '#dc3545']
+                    }]
+                }
+            });
+
+            const typeLabels = Object.keys(stats.by_type);
+            const typeData = Object.values(stats.by_type);
+            const backgroundColors = typeLabels.map((_, i) => `hsl(${i * 360 / typeLabels.length}, 70%, 60%)`);
+
+            // Chart 2: Documents by Type (Pie)
+            new Chart(document.getElementById('type-pie-chart'), {
+                type: 'doughnut',
+                data: {
+                    labels: typeLabels,
+                    datasets: [{
+                        label: 'Тип документа',
+                        data: typeData,
+                        backgroundColor: backgroundColors
+                    }]
+                }
+            });
+            
+            // Chart 3: Documents by Type (Bar)
+            new Chart(document.getElementById('type-bar-chart'), {
+                type: 'bar',
+                data: {
+                    labels: typeLabels,
+                    datasets: [{
+                        label: 'Количество документов',
+                        data: typeData,
+                        backgroundColor: backgroundColors
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+        } catch (error) {
+            console.error('Error loading statistics:', error);
+            document.getElementById('statistics-section').innerHTML = '<p class="error-message">Ошибка загрузки статистики.</p>';
+        }
+    }
+
+    // Language switcher
+    function changeLanguage() {
+        const selectedLang = document.getElementById('language-select').value;
+// ... existing code ...
+
+</head> 

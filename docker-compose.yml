@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  accounting-assistant:
+    build: .
+    container_name: accounting-assistant
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./app.log:/app/app.log
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=INFO
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - accounting-network
+
+  # Опционально: Nginx для обратного прокси
+  nginx:
+    image: nginx:alpine
+    container_name: accounting-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - accounting-assistant
+    restart: unless-stopped
+    networks:
+      - accounting-network
+    profiles:
+      - production
+
+networks:
+  accounting-network:
+    driver: bridge
+
+volumes:
+  uploads:
+    driver: local 

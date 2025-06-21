@@ -1,0 +1,27 @@
+{
+  "report_type": "fiscal",
+  "language": "ru",
+  "generated_date": "2025-06-21T18:07:46.706555",
+  "period": {
+    "month": 6,
+    "year": 2025,
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-30"
+  },
+  "fiscal_data": {
+    "total_documents": 0,
+    "total_sales": 0.0,
+    "total_vat": 0.0,
+    "companies": {}
+  },
+  "fisc_format": {
+    "report_code": "FISC_001",
+    "submission_deadline": "2025-07-25",
+    "required_fields": [
+      "company",
+      "idno",
+      "total_amount",
+      "vat_amount"
+    ]
+  }
+}
