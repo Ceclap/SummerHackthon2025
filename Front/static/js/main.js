@@ -21,24 +21,19 @@ document.addEventListener('DOMContentLoaded', function() {
             setLoadingState(true);
             
             try {
-                const response = await fetch('/ask_ai', {
+                const res = await fetch('/ask_ai', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ question: question })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question })
                 });
-
-                const data = await response.json();
-                
-                if (response.ok) {
-                    showResponse(data.answer);
+                const data = await res.json();
+                if (res.ok) {
+                    responseDiv.textContent = data.answer || 'Нет ответа от ИИ.';
                 } else {
-                    showError(data.error || 'Произошла ошибка при получении ответа');
+                    responseDiv.textContent = data.answer || 'Ошибка сервера.';
                 }
-            } catch (error) {
-                console.error('Error:', error);
-                showError('Ошибка сети. Проверьте подключение к интернету.');
+            } catch (err) {
+                responseDiv.textContent = 'Ошибка соединения с сервером.';
             } finally {
                 setLoadingState(false);
             }
