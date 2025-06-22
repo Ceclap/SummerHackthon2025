@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типы документов - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="documents.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo-link">
+                    <img src="images/logo.png" alt="Logo" class="logo">
+                    <div>
+                        <h2 data-key="sidebar_title">CONTASFERA</h2>
+                        <p data-key="sidebar_subtitle">Advanced Analytics</p>
+                    </div>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><span class="material-symbols-outlined">dashboard</span> <span data-key="menu_dashboard">Dashboard</span></a></li>
+                    <li class="nav-section" data-key="menu_section_functii">Funcții</li>
+                    <li><a href="upload.html"><span class="material-symbols-outlined">upload</span> <span data-key="menu_upload">Încărcare și Recunoaștere</span></a></li>
+                    <li><a href="validate.html"><span class="material-symbols-outlined">fact_check</span> <span data-key="menu_validate">Validare și Editare</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">archive</span> <span data-key="menu_archive">Arhiva Documentelor</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">analytics</span> <span data-key="menu_reports">Rapoarte și Analiză</span></a></li>
+                    <li class="nav-section" data-key="menu_section_data">Data</li>
+                    <li><a href="documents.html" class="active"><span class="material-symbols-outlined">description</span> <span data-key="menu_doctypes">Tipuri de documente</span></a></li>
+                    <li><a href="financial-analysis.html"><span class="material-symbols-outlined">monitoring</span> <span data-key="menu_financial_analysis">Analiză Financiară</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">receipt_long</span> <span data-key="menu_invoices">Balanța facturilor</span></a></li>
+                    <li class="nav-section" data-key="menu_section_pages">Pagini</li>
+                    <li><a href="profile.html"><span class="material-symbols-outlined">person</span> <span data-key="menu_profile">Formular de profil</span></a></li>
+                    <li><a href="calendar.html"><span class="material-symbols-outlined">calendar_today</span> <span data-key="menu_calendar">Calendar</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">quiz</span> <span data-key="menu_faq">Întrebări frecvente</span></a></li>
+                    <li class="nav-section" data-key="menu_section_charts">Grafice</li>
+                    <li><a href="#"><span class="material-symbols-outlined">bar_chart</span> <span data-key="menu_barchart">Diagramă cu bare</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">pie_chart</span> <span data-key="menu_piechart">Diagramă circulară</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">show_chart</span> <span data-key="menu_linechart">Diagramă liniară</span></a></li>
+                    <li><a href="index.html"><span class="material-symbols-outlined">home</span> <span data-key="menu_home">Acasă</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div>
+                    <h1 data-key="doctypes_title">Tipuri de documente</h1>
+                    <p data-key="doctypes_subtitle">Prezentare generală a tuturor categoriilor</p>
+                </div>
+                <div class="header-actions">
+                    <button id="lang-toggle-btn" class="theme-btn lang-btn">RU</button>
+                    <button id="theme-toggle-btn" class="theme-btn">
+                        <span class="material-symbols-outlined">light_mode</span>
+                    </button>
+                    <button class="download-btn"><span class="material-symbols-outlined">download</span> <span data-key="download_reports">DESCĂRCAȚI RAPOARTE</span></button>
+                </div>
+            </header>
+
+            <div class="document-types-grid">
+                <!-- Card 1 -->
+                <div class="doc-card color-1">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">F</div>
+                        <h3>Factura Fiscală</h3>
+                    </div>
+                    <ul class="doc-list">
+                        <li><span>FF-2023-08-15-001</span><span>15.08.2023</span></li>
+                        <li><span>FF-2023-08-14-005</span><span>14.08.2023</span></li>
+                        <li><span>FF-2023-08-14-002</span><span>14.08.2023</span></li>
+                    </ul>
+                    <div class="doc-card-footer">
+                        <a href="#" class="view-all">Смотреть все <span class="material-symbols-outlined">arrow_forward</span></a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="doc-card color-2">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">B</div>
+                        <h3>Bon Fiscal</h3>
+                    </div>
+                    <ul class="doc-list">
+                        <li><span>BF-2023-08-15-012</span><span>15.08.2023</span></li>
+                        <li><span>BF-2023-08-15-011</span><span>15.08.2023</span></li>
+                        <li><span>BF-2023-08-14-034</span><span>14.08.2023</span></li>
+                    </ul>
+                     <div class="doc-card-footer">
+                        <a href="#" class="view-all">Смотреть все <span class="material-symbols-outlined">arrow_forward</span></a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="doc-card color-3">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">C</div>
+                        <h3>Contract</h3>
+                    </div>
+                    <ul class="doc-list">
+                        <li><span>CT-2023-07-30-001</span><span>30.07.2023</span></li>
+                        <li><span>CT-2023-07-25-002</span><span>25.07.2023</span></li>
+                    </ul>
+                </div>
+                <!-- Card 4 -->
+                <div class="doc-card color-4">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">C</div>
+                        <h3>Chitanță</h3>
+                    </div>
+                    <ul class="doc-list">
+                        <li><span>CH-2023-08-12-003</span><span>12.08.2023</span></li>
+                    </ul>
+                </div>
+                <!-- Card 5 -->
+                <div class="doc-card color-5">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">A</div>
+                        <h3>Aviz de Însoțire</h3>
+                    </div>
+                    <ul class="doc-list">
+                        <li><span>AI-2023-08-15-002</span><span>15.08.2023</span></li>
+                        <li><span>AI-2023-08-14-001</span><span>14.08.2023</span></li>
+                        <li><span>AI-2023-08-12-004</span><span>12.08.2023</span></li>
+                    </ul>
+                    <div class="doc-card-footer">
+                        <a href="#" class="view-all">Смотреть все <span class="material-symbols-outlined">arrow_forward</span></a>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="doc-card color-6">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">F</div>
+                        <h3>Factură</h3>
+                    </div>
+                    <ul class="doc-list">
+                         <li><span>F-2023-08-10-010</span><span>10.08.2023</span></li>
+                         <li><span>F-2023-08-09-001</span><span>09.08.2023</span></li>
+                    </ul>
+                </div>
+                <!-- Card 7 -->
+                <div class="doc-card color-7">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">D</div>
+                        <h3>Declarație</h3>
+                    </div>
+                    <ul class="doc-list">
+                        <li><span>D-2023-07-01-001</span><span>01.07.2023</span></li>
+                    </ul>
+                </div>
+                <!-- Card 8 -->
+                <div class="doc-card color-8">
+                    <div class="doc-card-header">
+                        <div class="doc-card-icon">A</div>
+                        <h3>Alte Documente</h3>
+                    </div>
+                     <ul class="doc-list">
+                        <li><span>EXT-2023-08-01-001</span><span>01.08.2023</span></li>
+                        <li><span>ORD-2023-07-28-005</span><span>28.07.2023</span></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- The Modal -->
+    <div id="documentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <ul class="modal-doc-list">
+                    <!-- Document items will be dynamically inserted here -->
+                    <li><span>FF-2023-08-15-001</span><span>15.08.2023</span><button class="view-btn">Vezi</button></li>
+                    <li><span>FF-2023-08-14-005</span><span>14.08.2023</span><button class="view-btn">Vezi</button></li>
+                    <li><span>FF-2023-08-14-002</span><span>14.08.2023</span><button class="view-btn">Vezi</button></li>
+                    <li><span>FF-2023-08-13-010</span><span>13.08.2023</span><button class="view-btn">Vezi</button></li>
+                    <li><span>FF-2023-08-12-007</span><span>12.08.2023</span><button class="view-btn">Vezi</button></li>
+                    <li><span>FF-2023-08-11-003</span><span>11.08.2023</span><button class="view-btn">Vezi</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="documents.js"></script>
+    <script src="translator.js"></script>
+</body>
+</html> 

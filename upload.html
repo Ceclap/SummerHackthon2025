@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ro" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Încărcare Documente - Contasfera</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body class="light-theme">
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo-link">
+                    <img src="images/logo.png" alt="Logo" class="logo">
+                    <div>
+                        <h2 data-key="sidebar_title">CONTASFERA</h2>
+                        <p data-key="sidebar_subtitle">Advanced Analytics</p>
+                    </div>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><span class="material-symbols-outlined">dashboard</span> <span data-key="menu_dashboard">Dashboard</span></a></li>
+                    <li class="nav-section" data-key="menu_section_functii">Funcții</li>
+                    <li><a href="upload.html" class="active"><span class="material-symbols-outlined">upload</span> <span data-key="menu_upload">Încărcare și Recunoaștere</span></a></li>
+                    <li><a href="validate.html"><span class="material-symbols-outlined">fact_check</span> <span data-key="menu_validate">Validare și Editare</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">archive</span> <span data-key="menu_archive">Arhiva Documentelor</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">analytics</span> <span data-key="menu_reports">Rapoarte și Analiză</span></a></li>
+                    <li class="nav-section" data-key="menu_section_data">Data</li>
+                    <li><a href="documents.html"><span class="material-symbols-outlined">description</span> <span data-key="menu_doctypes">Tipuri de documente</span></a></li>
+                    <li><a href="financial-analysis.html"><span class="material-symbols-outlined">monitoring</span> <span data-key="menu_financial_analysis">Analiză Financiară</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">receipt_long</span> <span data-key="menu_invoices">Balanța facturilor</span></a></li>
+                    <li class="nav-section" data-key="menu_section_pages">Pagini</li>
+                    <li><a href="profile.html"><span class="material-symbols-outlined">person</span> <span data-key="menu_profile">Formular de profil</span></a></li>
+                    <li><a href="calendar.html"><span class="material-symbols-outlined">calendar_today</span> <span data-key="menu_calendar">Calendar</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">quiz</span> <span data-key="menu_faq">Întrebări frecvente</span></a></li>
+                    <li class="nav-section" data-key="menu_section_charts">Grafice</li>
+                    <li><a href="#"><span class="material-symbols-outlined">bar_chart</span> <span data-key="menu_barchart">Diagramă cu bare</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">pie_chart</span> <span data-key="menu_piechart">Diagramă circulară</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">show_chart</span> <span data-key="menu_linechart">Diagramă liniară</span></a></li>
+                    <li><a href="index.html"><span class="material-symbols-outlined">home</span> <span data-key="menu_home">Acasă</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div>
+                    <h1 data-key="upload_title">Încărcare și Recunoaștere</h1>
+                    <p data-key="upload_subtitle">Trageți sau selectați fișierele pentru analiză AI</p>
+                </div>
+                <div class="header-actions">
+                    <button id="lang-toggle-btn" class="theme-btn lang-btn">RO</button>
+                    <button id="theme-toggle-btn" class="theme-btn">
+                        <span class="material-symbols-outlined">light_mode</span>
+                    </button>
+                    <button class="download-btn"><span class="material-symbols-outlined">download</span> <span data-key="download_reports">DESCĂRCAȚI RAPOARTE</span></button>
+                </div>
+            </header>
+
+            <div class="upload-section">
+                <div id="drop-zone" class="drop-zone">
+                    <span class="material-symbols-outlined upload-icon">cloud_upload</span>
+                    <p data-key="upload_drop_text">Trageți fișierele aici sau <span class="browse-link">căutați pe computer</span></p>
+                    <input type="file" id="file-input" multiple hidden>
+                    <p class="formats-info" data-key="upload_formats">Formate suportate: PDF, PNG, JPG, CSV, XLSX, TXT, JSON</p>
+                </div>
+                <div id="file-list-container" class="file-list-container">
+                    <div class="file-list-header">
+                        <div class="file-list-col" data-key="col_filename">Nume fișier</div>
+                        <div class="file-list-col" data-key="col_type">Tip Detectat</div>
+                        <div class="file-list-col" data-key="col_status">Status</div>
+                    </div>
+                    <div id="file-list" class="file-list">
+                        <!-- Files will be listed here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="translator.js"></script>
+    <script src="upload.js"></script>
+</body>
+</html> 

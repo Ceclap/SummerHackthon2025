@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="Contasfera Logo" class="logo">
+                <h2>CONTASFERA</h2>
+                <p>Advanced Analytics</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="active"><span class="material-symbols-outlined">dashboard</span> <span data-key="menu_dashboard">Dashboard</span></a></li>
+                    <li class="nav-section" data-key="menu_section_functii">Funcții</li>
+                    <li><a href="upload.html"><span class="material-symbols-outlined">upload</span> <span data-key="menu_upload">Încărcare și Recunoaștere</span></a></li>
+                    <li><a href="validate.html"><span class="material-symbols-outlined">fact_check</span> <span data-key="menu_validate">Validare și Editare</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">archive</span> <span data-key="menu_archive">Arhiva Documentelor</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">analytics</span> <span data-key="menu_reports">Rapoarte și Analiză</span></a></li>
+                    <li class="nav-section" data-key="menu_section_data">Data</li>
+                    <li><a href="documents.html"><span class="material-symbols-outlined">description</span> <span data-key="menu_doctypes">Tipuri de documente</span></a></li>
+                    <li><a href="financial-analysis.html"><span class="material-symbols-outlined">monitoring</span> <span data-key="menu_financial_analysis">Analiză Financiară</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">receipt_long</span> <span data-key="menu_invoices">Balanța facturilor</span></a></li>
+                    <li class="nav-section" data-key="menu_section_pages">Pagini</li>
+                    <li><a href="profile.html"><span class="material-symbols-outlined">person</span> <span data-key="menu_profile">Formular de profil</span></a></li>
+                    <li><a href="calendar.html"><span class="material-symbols-outlined">calendar_today</span> <span data-key="menu_calendar">Calendar</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">quiz</span> <span data-key="menu_faq">Întrebări frecvente</span></a></li>
+                    <li class="nav-section" data-key="menu_section_charts">Grafice</li>
+                    <li><a href="#"><span class="material-symbols-outlined">bar_chart</span> <span data-key="menu_barchart">Diagramă cu bare</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">pie_chart</span> <span data-key="menu_piechart">Diagramă circulară</span></a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">show_chart</span> <span data-key="menu_linechart">Diagramă liniară</span></a></li>
+                    <li><a href="index.html"><span class="material-symbols-outlined">home</span> <span data-key="menu_home">Acasă</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div>
+                    <h1 data-key="dashboard_title">DASHBOARD</h1>
+                    <p data-key="dashboard_welcome">Bun venit la panoul dvs. de control</p>
+                </div>
+                <div class="header-actions">
+                    <button id="lang-toggle-btn" class="theme-btn lang-btn">RU</button>
+                    <button id="theme-toggle-btn" class="theme-btn">
+                        <span class="material-symbols-outlined">dark_mode</span>
+                    </button>
+                    <button class="download-btn"><span class="material-symbols-outlined">download</span> <span data-key="download_reports">DESCĂRCAȚI RAPOARTE</span></button>
+                </div>
+            </header>
+            <div class="ai-assistant-bar">
+                <input type="text" class="ai-input" placeholder="Ask our AI assistant anything about your accounting..." data-key="ai_placeholder">
+                <div class="mini-sphere-wrapper">
+                    <div class="mini-sphere">
+                        <div class="mini-ring mini-ring-1"></div>
+                        <div class="mini-ring mini-ring-2"></div>
+                        <div class="mini-sphere-content">
+                            <div class="mini-sphere-icon mini-main-icon">MDL</div>
+                            <div class="mini-sphere-icon mini-icon-percent">%</div>
+                            <div class="mini-sphere-icon mini-icon-plus">+</div>
+                            <div class="mini-sphere-icon mini-icon-chart">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="mini-sphere-year">2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="card large-card">
+                    <div class="card-header">
+                        <div>
+                            <p data-key="card_total_revenue_label">Venituri Generate</p>
+                            <h3>MDL 230,000.00</h3>
+                        </div>
+                        <span class="material-symbols-outlined">download</span>
+                    </div>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="card medium-card">
+                    <h4 data-key="card_recent_docs">Documente Recente</h4>
+                    <div class="document-list">
+                        <div class="document-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <p class="document-name">Factura_Client...</p>
+                            <p class="document-date">2023-10-26</p>
+                            <button class="view-btn">Vezi</button>
+                        </div>
+                        <div class="document-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <p class="document-name">Bon_Fiscal_C...</p>
+                            <p class="document-date">2023-10-25</p>
+                            <button class="view-btn">Vezi</button>
+                        </div>
+                        <div class="document-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <p class="document-name">Contract_Inch...</p>
+                            <p class="document-date">2023-10-24</p>
+                            <button class="view-btn">Vezi</button>
+                        </div>
+                        <div class="document-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <p class="document-name">Extras_de_Co...</p>
+                            <p class="document-date">2023-10-23</p>
+                            <button class="view-btn">Vezi</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card small-card campaign-card">
+                     <h4 data-key="card_campaign">Campanie</h4>
+                     <div class="chart-container">
+                        <canvas id="campaignChart"></canvas>
+                     </div>
+                     <p class="campaign-revenue" data-key="card_campaign_revenue">MDL 230,000.00 venituri generate</p>
+                     <p class="campaign-info" data-key="card_campaign_info">Include cheltuieli și costuri diverse suplimentare</p>
+                </div>
+                <div class="card small-card sales-qty-card">
+                    <h4 data-key="card_sales_qty">Cantitatea de vânzări</h4>
+                     <div class="chart-container">
+                        <canvas id="salesQuantityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+    <script src="translator.js"></script>
+</body>
+</html>

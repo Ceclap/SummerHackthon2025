@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Dark Theme (Default) */
+    --color-primary: #1E1E1E;
+    --color-secondary: #141414;
+    --color-accent: #4A90E2;
+    --color-text-primary: #E0E0E0;
+    --color-text-secondary: #A0A0A0;
+    --color-green: #50D1AA;
+    --color-border: #2C2C2C;
+
+    --font-family: 'Poppins', sans-serif;
+}
+
+body.light-theme {
+    /* Light Theme Overrides */
+    --color-primary: #FFFFFF;
+    --color-secondary: #F8F9FA;
+    --color-text-primary: #212529;
+    --color-text-secondary: #6C757D;
+    --color-border: #DEE2E6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-secondary);
+    color: var(--color-text-primary);
+    display: flex;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-primary);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color-border);
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sidebar-header .logo {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.sidebar-header .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.sidebar-header p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-nav a .material-symbols-outlined {
+    margin-right: 15px;
+    font-size: 22px;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: var(--color-accent);
+    color: #FFF;
+}
+
+.sidebar-nav .nav-section {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    padding: 10px 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: var(--color-secondary);
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.theme-btn {
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-btn:hover {
+    color: var(--color-accent);
+}
+
+.main-header h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.main-header p {
+    color: var(--color-text-secondary);
+}
+
+.download-btn {
+    background-color: var(--color-accent);
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.search-icon {
+    color: var(--color-text-secondary);
+    margin-right: 10px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color: var(--color-text-primary);
+}
+
+.search-input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.ai-assistant-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.ai-input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    flex-grow: 1;
+    padding: 10px 15px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color: var(--color-text-primary);
+}
+
+.ai-input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.ai-button {
+    background-color: var(--color-accent);
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    grid-template-areas:
+        "newblock1 newblock2 transactions"
+        "revenue revenue transactions"
+        "campaign sales-qty transactions";
+}
+
+.card {
+    background-color: var(--color-primary);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+}
+
+.large-card { grid-area: revenue; }
+.medium-card { grid-area: transactions; }
+.campaign-card { grid-area: campaign; }
+.sales-qty-card { grid-area: sales-qty; }
+.new-block-1 { grid-area: newblock1; }
+.new-block-2 { grid-area: newblock2; }
+
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.card-header p {
+    color: var(--color-text-secondary);
+}
+.card-header h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+#revenueChart {
+    max-height: 250px;
+}
+
+.medium-card h4 {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction-id {
+    font-weight: 600;
+    color: var(--color-accent);
+}
+.transaction-user, .transaction-date {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.transaction-amount {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.green-bg {
+    background-color: var(--color-green);
+    color: var(--color-primary);
+}
+
+
+.campaign-card {
+    text-align: center;
+}
+
+.campaign-card h4 {
+    margin-bottom: 10px;
+}
+
+#campaignChart {
+    margin: 0 auto 10px auto;
+}
+
+.campaign-revenue {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+.campaign-info {
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+}
+
+.geo-chart {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.chart-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+}
+
+.campaign-card .chart-container {
+    height: 140px;
+    margin-bottom: 15px;
+}
+
+.document-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.document-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.document-item:last-child {
+    border-bottom: none;
+}
+
+.document-item .material-symbols-outlined {
+    margin-right: 15px;
+    color: var(--color-text-secondary);
+}
+
+.document-name {
+    flex-grow: 1;
+    color: var(--color-text-primary);
+}
+
+.document-date {
+    margin: 0 15px;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.view-btn {
+    background-color: transparent;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 5px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.view-btn:hover {
+    background-color: var(--color-accent);
+    color: #FFF;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "stat1 stat2"
+            "stat3 stat4"
+            "revenue revenue"
+            "transactions transactions"
+            "campaign sales-qty";
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "stat1"
+            "stat2"
+            "stat3"
+            "stat4"
+            "revenue"
+            "transactions"
+            "campaign"
+            "sales-qty";
+    }
+}
