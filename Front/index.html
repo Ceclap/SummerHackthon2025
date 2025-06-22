@@ -12,15 +12,15 @@
     <div class="container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <img src="https://i.imgur.com/2MV8VzF.png" alt="User Avatar" class="avatar">
-                <h2>Ed Roh</h2>
-                <p>VP Fancy Admin</p>
+                <img src="images/logo.png" alt="Contasfera Logo" class="logo">
+                <h2>CONTASFERA</h2>
+                <p>Advanced Analytics</p>
             </div>
             <nav class="sidebar-nav">
                 <ul>
                     <li><a href="#" class="active"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
                     <li class="nav-section">Data</li>
-                    <li><a href="#"><span class="material-symbols-outlined">group</span> Manage Team</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">description</span> Типы документов</a></li>
                     <li><a href="#"><span class="material-symbols-outlined">contacts</span> Contacts Information</a></li>
                     <li><a href="#"><span class="material-symbols-outlined">receipt_long</span> Invoices Balances</a></li>
                     <li class="nav-section">Pages</li>
@@ -31,7 +31,6 @@
                     <li><a href="#"><span class="material-symbols-outlined">bar_chart</span> Bar Chart</a></li>
                     <li><a href="#"><span class="material-symbols-outlined">pie_chart</span> Pie Chart</a></li>
                     <li><a href="#"><span class="material-symbols-outlined">show_chart</span> Line Chart</a></li>
-                    <li><a href="#"><span class="material-symbols-outlined">public</span> Geography Chart</a></li>
                 </ul>
             </nav>
         </aside>
@@ -41,14 +40,17 @@
                     <h1>DASHBOARD</h1>
                     <p>Welcome to your dashboard</p>
                 </div>
-                <button class="download-btn"><span class="material-symbols-outlined">download</span> DOWNLOAD REPORTS</button>
+                <div class="header-actions">
+                    <button id="theme-toggle-btn" class="theme-btn">
+                        <span class="material-symbols-outlined">dark_mode</span>
+                    </button>
+                    <button class="download-btn"><span class="material-symbols-outlined">download</span> DOWNLOAD REPORTS</button>
+                </div>
             </header>
-        <div class="ai-search-container">
-            <input type="text" class="ai-search-input" placeholder="Ask our AI assistant anything about your accounting...">
-            <button class="ai-search-button">
-                Ask AI
-            </button>
-        </div>
+            <div class="ai-assistant-bar">
+                <input type="text" class="ai-input" placeholder="Ask our AI assistant anything about your accounting...">
+                <button class="ai-button">Ask AI</button>
+            </div>
             <div class="dashboard-grid">
                 <div class="card large-card">
                     <div class="card-header">
@@ -58,35 +60,35 @@
                         </div>
                         <span class="material-symbols-outlined">download</span>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="revenueChart"></canvas>
-                    </div>
+                    <canvas id="revenueChart"></canvas>
                 </div>
                 <div class="card medium-card">
                     <h4>Documente Recente</h4>
-                    <div class="document-item">
-                        <span class="material-symbols-outlined">description</span>
-                        <p class="document-name">Factura_Client_01_Nume.pdf</p>
-                        <p class="document-date">2023-10-26</p>
-                        <button class="document-action-btn">Vezi</button>
-                    </div>
-                    <div class="document-item">
-                        <span class="material-symbols-outlined">description</span>
-                        <p class="document-name">Bon_Fiscal_Cheltuieli.jpg</p>
-                        <p class="document-date">2023-10-25</p>
-                        <button class="document-action-btn">Vezi</button>
-                    </div>
-                    <div class="document-item">
-                        <span class="material-symbols-outlined">description</span>
-                        <p class="document-name">Contract_Inchiriere.pdf</p>
-                        <p class="document-date">2023-10-24</p>
-                        <button class="document-action-btn">Vezi</button>
-                    </div>
-                    <div class="document-item">
-                        <span class="material-symbols-outlined">description</span>
-                        <p class="document-name">Extras_de_Cont_Septembrie.pdf</p>
-                        <p class="document-date">2023-10-23</p>
-                        <button class="document-action-btn">Vezi</button>
+                    <div class="document-list">
+                        <div class="document-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <p class="document-name">Factura_Client...</p>
+                            <p class="document-date">2023-10-26</p>
+                            <button class="view-btn">Vezi</button>
+                        </div>
+                        <div class="document-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <p class="document-name">Bon_Fiscal_C...</p>
+                            <p class="document-date">2023-10-25</p>
+                            <button class="view-btn">Vezi</button>
+                        </div>
+                        <div class="document-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <p class="document-name">Contract_Inch...</p>
+                            <p class="document-date">2023-10-24</p>
+                            <button class="view-btn">Vezi</button>
+                        </div>
+                        <div class="document-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <p class="document-name">Extras_de_Co...</p>
+                            <p class="document-date">2023-10-23</p>
+                            <button class="view-btn">Vezi</button>
+                        </div>
                     </div>
                 </div>
                 <div class="card small-card campaign-card">
@@ -101,6 +103,47 @@
                     <h4>Sales Quantity</h4>
                      <div class="chart-container">
                         <canvas id="salesQuantityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div id="faq-content" class="hidden">
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Cum pot adăuga un document nou?</span>
+                            <span class="material-symbols-outlined expand-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Pentru a adăuga un document nou, navigați la secțiunea "Tipuri de Documente" din meniul lateral, selectați tipul de document dorit și folosiți butonul "Încarcă Document". Puteți încărca fișiere PDF, JPG sau PNG.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                       <button class="faq-question">
+                           <span>Cum funcționează asistentul AI?</span>
+                           <span class="material-symbols-outlined expand-icon">expand_more</span>
+                       </button>
+                       <div class="faq-answer">
+                           <p>Asistentul AI vă permite să adresați întrebări în limbaj natural despre datele dumneavoastră financiare. De exemplu, puteți întreba "Care a fost totalul cheltuielilor în luna Mai?" sau "Compară veniturile din trimestrul 1 cu cele din trimestrul 2". Asistentul va analiza datele și va oferi un răspuns direct.</p>
+                       </div>
+                    </div>
+                    <div class="faq-item">
+                       <button class="faq-question">
+                           <span>Pot schimba tema aplicației?</span>
+                           <span class="material-symbols-outlined expand-icon">expand_more</span>
+                       </button>
+                       <div class="faq-answer">
+                           <p>Da, puteți comuta între tema întunecată (Dark Mode) și cea luminoasă (Light Mode) folosind butonul cu pictograma de soare/lună din colțul dreapta-sus al paginii principale.</p>
+                       </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Pot schimba tema aplicației?
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Da, puteți comuta între tema deschisă (Light Mode) și cea întunecată (Dark Mode) folosind comutatorul de temă situat în colțul de sus al meniului lateral.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
