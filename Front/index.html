@@ -18,15 +18,15 @@
             </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="#" class="active"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                    <li><a href="#" id="dashboard-link" class="active"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
                     <li class="nav-section">Data</li>
-                    <li><a href="#"><span class="material-symbols-outlined">description</span> Типы документов</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">description</span> Tipuri de documente</a></li>
                     <li><a href="#"><span class="material-symbols-outlined">contacts</span> Contacts Information</a></li>
                     <li><a href="#"><span class="material-symbols-outlined">receipt_long</span> Invoices Balances</a></li>
                     <li class="nav-section">Pages</li>
                     <li><a href="#"><span class="material-symbols-outlined">person</span> Profile Form</a></li>
                     <li><a href="#"><span class="material-symbols-outlined">calendar_today</span> Calendar</a></li>
-                    <li><a href="#"><span class="material-symbols-outlined">quiz</span> FAQ Page</a></li>
+                    <li><a href="#" id="faq-link"><span class="material-symbols-outlined">quiz</span> FAQ Page</a></li>
                     <li class="nav-section">Charts</li>
                     <li><a href="#"><span class="material-symbols-outlined">bar_chart</span> Bar Chart</a></li>
                     <li><a href="#"><span class="material-symbols-outlined">pie_chart</span> Pie Chart</a></li>
@@ -34,6 +34,8 @@
                 </ul>
             </nav>
         </aside>
+
+        <!-- Acesta este containerul pentru Dashboard -->
         <main class="main-content">
             <header class="main-header">
                 <div>
@@ -48,7 +50,7 @@
                 </div>
             </header>
             <div class="ai-assistant-bar">
-                <input type="text" class="ai-input" placeholder="Ask our AI assistant anything about your accounting...">
+                <input type="text" class="ai-input" placeholder="Ask our AI assistant anything...">
                 <button class="ai-button">Ask AI</button>
             </div>
             <div class="dashboard-grid">
@@ -58,13 +60,15 @@
                             <p>Revenue Generated</p>
                             <h3>$59,342.32</h3>
                         </div>
-                        <span class="material-symbols-outlined">download</span>
                     </div>
-                    <canvas id="revenueChart"></canvas>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
                 </div>
-                <div class="card medium-card">
+                <div class="card medium-card transactions-card">
                     <h4>Documente Recente</h4>
                     <div class="document-list">
+                        <!-- AICI AM REINTRODUS DOCUMENTELE -->
                         <div class="document-item">
                             <span class="material-symbols-outlined">description</span>
                             <p class="document-name">Factura_Client...</p>
@@ -97,7 +101,6 @@
                         <canvas id="campaignChart"></canvas>
                      </div>
                      <p class="campaign-revenue">$48,352 revenue generated</p>
-                     <p class="campaign-info">Includes extra misc expenditures and costs</p>
                 </div>
                 <div class="card small-card sales-qty-card">
                     <h4>Sales Quantity</h4>
@@ -106,48 +109,33 @@
                     </div>
                 </div>
             </div>
-            <div id="faq-content" class="hidden">
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Cum pot adăuga un document nou?</span>
-                            <span class="material-symbols-outlined expand-icon">expand_more</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Pentru a adăuga un document nou, navigați la secțiunea "Tipuri de Documente" din meniul lateral, selectați tipul de document dorit și folosiți butonul "Încarcă Document". Puteți încărca fișiere PDF, JPG sau PNG.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                       <button class="faq-question">
-                           <span>Cum funcționează asistentul AI?</span>
-                           <span class="material-symbols-outlined expand-icon">expand_more</span>
-                       </button>
-                       <div class="faq-answer">
-                           <p>Asistentul AI vă permite să adresați întrebări în limbaj natural despre datele dumneavoastră financiare. De exemplu, puteți întreba "Care a fost totalul cheltuielilor în luna Mai?" sau "Compară veniturile din trimestrul 1 cu cele din trimestrul 2". Asistentul va analiza datele și va oferi un răspuns direct.</p>
-                       </div>
-                    </div>
-                    <div class="faq-item">
-                       <button class="faq-question">
-                           <span>Pot schimba tema aplicației?</span>
-                           <span class="material-symbols-outlined expand-icon">expand_more</span>
-                       </button>
-                       <div class="faq-answer">
-                           <p>Da, puteți comuta între tema întunecată (Dark Mode) și cea luminoasă (Light Mode) folosind butonul cu pictograma de soare/lună din colțul dreapta-sus al paginii principale.</p>
-                       </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            Pot schimba tema aplicației?
-                        </button>
-                        <div class="faq-answer">
-                            <p>
-                                Da, puteți comuta între tema deschisă (Light Mode) și cea întunecată (Dark Mode) folosind comutatorul de temă situat în colțul de sus al meniului lateral.
-                            </p>
-                        </div>
+        </main>
+
+        <!-- Sectiunea FAQ, corect pozitionata AFARA din main-content -->
+        <section class="faq-section">
+            <div class="faq-content-wrapper">
+                <h2>Întrebări Frecvente</h2>
+                <div class="faq-item">
+                    <button class="faq-question">Cum pot adăuga un document nou?</button>
+                    <div class="faq-answer">
+                        <p>Pentru a adăuga un document nou, navigați la secțiunea "Tipuri de Documente" din meniul lateral, selectați tipul de document dorit și folosiți butonul "Încarcă Document".</p>
                     </div>
                 </div>
+                <div class="faq-item">
+                   <button class="faq-question">Cum funcționează asistentul AI?</button>
+                   <div class="faq-answer">
+                       <p>Asistentul AI vă permite să adresați întrebări în limbaj natural despre datele dumneavoastră financiare. De exemplu: "Care a fost totalul cheltuielilor în luna Mai?".</p>
+                   </div>
+                </div>
+                <div class="faq-item">
+                   <button class="faq-question">Pot schimba tema aplicației?</button>
+                   <div class="faq-answer">
+                       <p>Da, puteți comuta între tema întunecată (Dark Mode) și cea luminoasă (Light Mode) folosind butonul cu pictograma de soare/lună din colțul dreapta-sus.</p>
+                   </div>
+                </div>
             </div>
-        </main>
+        </section>
+
     </div>
     <script src="main.js"></script>
 </body>

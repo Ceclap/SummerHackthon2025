@@ -1,9 +1,57 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // --- SELECTORI ELEMENTE ---
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     const body = document.body;
+    const faqLink = document.getElementById('faq-link');
+    const dashboardLink = document.getElementById('dashboard-link');
+
     let charts = {};
 
-    // Function to get current theme colors from CSS variables
+    // =================================================================
+    // LOGICA PENTRU PAGINA FAQ și ACORDEON
+    // =================================================================
+    
+    // Comutare la pagina FAQ
+    if (faqLink) {
+        faqLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            body.classList.add('faq-active');
+            window.scrollTo(0, 0); // Deruleaza la inceputul paginii
+        });
+    }
+
+    // Revenire la Dashboard
+    if (dashboardLink) {
+        dashboardLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Eliminam clasa si activam/dezactivam link-urile din meniu
+            body.classList.remove('faq-active');
+            dashboardLink.classList.add('active');
+            if (faqLink) faqLink.classList.remove('active');
+            window.scrollTo(0, 0); // Deruleaza la inceputul paginii
+        });
+    }
+    
+    // Logica pentru acordeonul FAQ
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            // Inchide toate celelalte raspunsuri deschise
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            // Comuta starea (deschis/inchis) pentru elementul curent
+            item.classList.toggle('active');
+        });
+    });
+
+    // =================================================================
+    // LOGICA PENTRU GRAFICE (CHARTS)
+    // =================================================================
+
     function getThemeColors() {
         const styles = getComputedStyle(body);
         return {
@@ -18,14 +66,13 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 
-    // Function to initialize or update all charts
     function initializeOrUpdateCharts() {
         const colors = getThemeColors();
 
-        // Destroy existing charts if they exist
+        // Distruge graficele existente inainte de a le recrea
         Object.values(charts).forEach(chart => chart.destroy());
 
-        // --- Revenue Chart ---
+        // --- Grafic Venituri (Revenue Chart) ---
         const revenueCtx = document.getElementById('revenueChart').getContext('2d');
         charts.revenue = new Chart(revenueCtx, {
             type: 'line',
@@ -34,77 +81,39 @@ document.addEventListener("DOMContentLoaded", function() {
                 datasets: [{
                     label: 'Venituri',
                     data: [10, 18, 15, 22, 18, 23, 19, 22, 21, 25, 24, 28],
-                    borderColor: colors.lineColor1,
-                    backgroundColor: 'transparent',
-                    tension: 0.4,
-                    pointBackgroundColor: colors.lineColor1,
-                    pointBorderColor: colors.pointBorderColor,
-                    pointRadius: 5,
-                    borderWidth: 2
+                    borderColor: colors.lineColor1, tension: 0.4, pointBackgroundColor: colors.lineColor1,
+                    pointBorderColor: colors.pointBorderColor, pointRadius: 5, borderWidth: 2
                 }, {
                     label: 'Cheltuieli',
                     data: [8, 10, 9, 12, 14, 15, 12, 14, 13, 16, 15, 17],
-                    borderColor: colors.lineColor2,
-                    backgroundColor: 'transparent',
-                    tension: 0.4,
-                    pointBackgroundColor: colors.lineColor2,
-                    pointBorderColor: colors.pointBorderColor,
-                    pointRadius: 5,
-                    borderWidth: 2
+                    borderColor: colors.lineColor2, tension: 0.4, pointBackgroundColor: colors.lineColor2,
+                    pointBorderColor: colors.pointBorderColor, pointRadius: 5, borderWidth: 2
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true, maintainAspectRatio: false,
                 scales: {
                     y: {
-                        beginAtZero: false,
                         grid: { color: colors.gridColor, borderDash: [5, 5] },
-                        ticks: {
-                            color: colors.textColor,
-                            callback: function(value) { return 'MDL ' + value + 'k'; }
-                        }
+                        ticks: { color: colors.textColor, callback: (value) => `MDL ${value}k` }
                     },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: colors.textColor }
-                    }
+                    x: { grid: { display: false }, ticks: { color: colors.textColor } }
                 },
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        align: 'end',
-                        labels: {
-                            color: colors.textColor,
-                            usePointStyle: true,
-                            pointStyle: 'rect'
-                        }
-                    }
-                }
+                plugins: { legend: { position: 'top', align: 'end', labels: { color: colors.textColor, usePointStyle: true, pointStyle: 'rect' } } }
             }
         });
 
-        // --- Campaign Chart ---
+        // --- Grafic Campanie (Campaign Chart) ---
         const campaignCtx = document.getElementById('campaignChart').getContext('2d');
         charts.campaign = new Chart(campaignCtx, {
             type: 'doughnut',
             data: {
-                datasets: [{
-                    data: [65, 35],
-                    backgroundColor: [colors.doughnutBg1, colors.doughnutBg2],
-                    borderColor: colors.doughnutBorder,
-                    borderWidth: 5,
-                    cutout: '80%'
-                }]
+                datasets: [{ data: [65, 35], backgroundColor: [colors.doughnutBg1, colors.doughnutBg2], borderColor: colors.doughnutBorder, borderWidth: 5, cutout: '80%' }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false }, tooltip: { enabled: false } }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } } }
         });
 
-        // --- Sales Quantity Chart ---
+        // --- Grafic Vanzari (Sales Quantity Chart) ---
         const salesQuantityCtx = document.getElementById('salesQuantityChart').getContext('2d');
         const salesColors = {
             dark: ['#A07E69', '#E6A573', '#F7C480', '#FDECB0', '#ADDDC8', '#82CA9D'],
@@ -131,33 +140,26 @@ document.addEventListener("DOMContentLoaded", function() {
                     x: { stacked: true, grid: { display: false }, ticks: { color: colors.textColor } },
                     y: { stacked: true, beginAtZero: true, grid: { color: colors.gridColor }, ticks: { color: colors.textColor } }
                 },
-                plugins: { 
-                    legend: { 
-                        position: 'right', 
-                        labels: {
-                            color: colors.textColor,
-                            boxWidth: 10,
-                            usePointStyle: true,
-                            pointStyle: 'rect'
-                        }
-                    } 
-                }
+                plugins: { legend: { position: 'right', labels: { color: colors.textColor, boxWidth: 10, usePointStyle: true, pointStyle: 'rect' } } }
             }
         });
     }
 
-    // --- Theme Switcher Logic ---
+    // =================================================================
+    // LOGICA PENTRU COMUTATORUL DE TEMA
+    // =================================================================
+    
     themeToggleBtn.addEventListener('click', () => {
         body.classList.toggle('light-theme');
         const isLight = body.classList.contains('light-theme');
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
         themeToggleBtn.querySelector('.material-symbols-outlined').textContent = isLight ? 'light_mode' : 'dark_mode';
         
-        // Use a short timeout to allow CSS variables to update before redrawing charts
+        // Asteptam putin pentru ca variabilele CSS sa se actualizeze inainte de a redesena graficele
         setTimeout(initializeOrUpdateCharts, 50);
     });
 
-    // --- Initial Load ---
+    // --- Incarcarea initiala ---
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
         body.classList.add('light-theme');
@@ -166,55 +168,6 @@ document.addEventListener("DOMContentLoaded", function() {
         themeToggleBtn.querySelector('.material-symbols-outlined').textContent = 'dark_mode';
     }
 
+    // Initializam graficele la incarcarea paginii
     initializeOrUpdateCharts();
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    const faqLink = document.getElementById('faq-link');
-    const dashboardLink = document.getElementById('dashboard-link'); // Presupunem ca exista un link cu acest ID pentru a reveni
-    const mainContent = document.getElementById('main-content');
-    const faqSection = document.getElementById('faq-section');
-
-    // --- Logica de comutare a vizualizarii (Dashboard <-> FAQ) ---
-
-    if (faqLink && mainContent && faqSection) {
-        faqLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            mainContent.style.display = 'none';
-            faqSection.style.display = 'block';
-            window.scrollTo(0, 0);
-        });
-    }
-    
-    // Adaugati un event listener pentru a reveni la dashboard
-    // Puteti atasa acest listener la logo-ul aplicatiei sau la un link "Dashboard"
-    if (dashboardLink && mainContent && faqSection) {
-        dashboardLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            mainContent.style.display = 'grid'; // Sau 'block', in functie de layout-ul initial
-            faqSection.style.display = 'none';
-            window.scrollTo(0, 0);
-        });
-    }
-
-    // --- Logica pentru acordeonul FAQ ---
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            // Verificam daca elementul este deja activ
-            const isActive = item.classList.contains('active');
-
-            // Optional: Inchide toate celelalte raspunsuri deschise
-            faqItems.forEach(otherItem => {
-                otherItem.classList.remove('active');
-            });
-
-            // Daca elementul nu era activ, il activam
-            if (!isActive) {
-                item.classList.add('active');
-            }
-        });
-    });
-}); 
