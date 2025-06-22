@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="header-secondary">
+    <h1>{{ _('Tipuri de documente') }}</h1>
+    <p>{{ _('Prezentare generală a tuturor categoriilor') }}</p>
+</div>
+<section class="document-types">
+    {% for key, value in doc_types.items() %}
+    <div class="doc-card">
+        <div class="doc-card-header">
+            <span class="doc-initial" style="background-color: {{ value.color }};">{{ value.initial }}</span>
+            <h3>{{ value.name }}</h3>
+        </div>
+        <ul class="doc-list">
+            {% for doc in value.docs[:3] %}
+            <li><span>{{ doc.id }}</span><span>{{ doc.date }}</span></li>
+            {% endfor %}
+        </ul>
+        <a href="#" class="see-all" data-doctype="{{ key }}">{{ _('Смотреть все') }} →</a>
+    </div>
+    {% endfor %}
+</section>
+
+<div class="modal" id="doc-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-title"></h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <ul class="modal-doc-list" id="modal-doc-list">
+                <!-- JS will populate this list -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    const documentsData = {{ doc_types|tojson }};
+</script>
+{% endblock %}

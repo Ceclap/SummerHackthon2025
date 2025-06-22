@@ -1,0 +1,713 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-06-22 06:30+0300\n"
+"PO-Revision-Date: 2025-06-22 06:05+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app.py:77
+msgid "OpenAI API key not set. Please configure it in the .env file."
+msgstr "Ключ API OpenAI не настроен. Пожалуйста, настройте его в файле .env."
+
+#: app.py:81
+msgid "No question provided"
+msgstr "Вопрос не предоставлен"
+
+#: app.py:92
+msgid "System prompt file not found."
+msgstr "Файл с системным промптом не найден."
+
+#: app.py:95
+msgid "Could not configure AI assistant."
+msgstr "Не удалось настроить ИИ-ассистента."
+
+#: app.py:111
+msgid "Failed to get response from AI assistant."
+msgstr "Не удалось получить ответ от ИИ-ассистента."
+
+#: app.py:121 app.py:143
+msgid "No file part"
+msgstr "Файл не выбран"
+
+#: app.py:125 app.py:147
+msgid "No selected file"
+msgstr "Файл не выбран"
+
+#: app.py:130
+#, python-format
+msgid "File \"%(filename)s\" successfully uploaded!"
+msgstr "Файл \"%(filename)s\" успешно загружен!"
+
+#: app.py:133 app.py:228
+msgid "Invalid file type"
+msgstr "Недопустимый тип файла"
+
+#: app.py:139
+#, fuzzy
+msgid "OpenAI API key not configured. Cannot extract data."
+msgstr "Ключ API OpenAI не настроен. Пожалуйста, настройте его в файле .env."
+
+#: app.py:177
+msgid "Error communicating with AI service. Please try again later."
+msgstr "Ошибка связи с сервисом ИИ. Пожалуйста, попробуйте позже."
+
+#: app.py:203
+msgid "AI service returned an unexpected format. Saving raw text."
+msgstr "Сервис ИИ вернул неожиданный формат. Сохраняется исходный текст."
+
+#: app.py:225
+msgid "An unexpected error occurred. Please check the logs."
+msgstr "Произошла непредвиденная ошибка. Пожалуйста, проверьте логи."
+
+#: templates/dashboard.html:5
+msgid "Добро пожаловать в ContaSfera"
+msgstr "Добро пожаловать в ContaSfera"
+
+#: templates/dashboard.html:6
+msgid "Ваша умная платформа для бухгалтерского учета"
+msgstr "Ваша умная платформа для бухгалтерского учета"
+
+#: templates/dashboard.html:10
+msgid "Загрузить документ"
+msgstr "Загрузить документ"
+
+#: templates/dashboard.html:14
+msgid "Просмотр документов"
+msgstr "Просмотр документов"
+
+#: templates/dashboard.html:22
+msgid "Обработано документов"
+msgstr "Обработано документов"
+
+#: templates/dashboard.html:25
+msgid "за месяц"
+msgstr "за месяц"
+
+#: templates/dashboard.html:31
+msgid "Общий доход"
+msgstr "Общий доход"
+
+#: templates/dashboard.html:40
+msgid "Среднее время обработки"
+msgstr "Среднее время обработки"
+
+#: templates/dashboard.html:43
+msgid "сек"
+msgstr "сек"
+
+#: templates/dashboard.html:49
+msgid "Точность распознавания"
+msgstr "Точность распознавания"
+
+#: templates/dashboard.html:58
+msgid "ИИ-Ассистент"
+msgstr "ИИ-Ассистент"
+
+#: templates/dashboard.html:59
+msgid "Онлайн"
+msgstr "Онлайн"
+
+#: templates/dashboard.html:61
+msgid "Задайте любой вопрос о бухгалтерии, налоговом законодательстве Молдовы или использовании платформы"
+msgstr "Задайте любой вопрос о бухгалтерии, налоговом законодательстве Молдовы или использовании платформы"
+
+#: templates/dashboard.html:65
+msgid "Например: Как правильно заполнить налоговую декларацию?"
+msgstr "Например: Как правильно заполнить налоговую декларацию?"
+
+#: templates/dashboard.html:67
+msgid "Спросить"
+msgstr "Спросить"
+
+#: templates/dashboard.html:73
+msgid "Ответ ИИ-ассистента"
+msgstr "Ответ ИИ-ассистента"
+
+#: templates/dashboard.html:82
+msgid "Доходы по месяцам"
+msgstr "Доходы по месяцам"
+
+#: templates/dashboard.html:89
+msgid "Янв"
+msgstr "Янв"
+
+#: templates/dashboard.html:90
+msgid "Фев"
+msgstr "Фев"
+
+#: templates/dashboard.html:91
+msgid "Мар"
+msgstr "Мар"
+
+#: templates/dashboard.html:92
+msgid "Апр"
+msgstr "Апр"
+
+#: templates/dashboard.html:93
+msgid "Май"
+msgstr "Май"
+
+#: templates/dashboard.html:94
+msgid "Июн"
+msgstr "Июн"
+
+#: templates/dashboard.html:98
+msgid "Типы документов"
+msgstr "Типы документов"
+
+#: templates/dashboard.html:103
+msgid "Счета-фактуры"
+msgstr "Счета-фактуры"
+
+#: templates/dashboard.html:107
+msgid "Накладные"
+msgstr "Накладные"
+
+#: templates/dashboard.html:111
+msgid "Другие"
+msgstr "Другие"
+
+#: templates/dashboard.html:119
+msgid "Недавние документы"
+msgstr "Недавние документы"
+
+#: templates/dashboard.html:120
+msgid "Посмотреть все"
+msgstr "Посмотреть все"
+
+#: templates/dashboard.html:128
+msgid "Просмотр"
+msgstr "Просмотр"
+
+#: templates/dashboard.html:129
+msgid "Скачать"
+msgstr "Скачать"
+
+#: templates/dashboard.html:13
+msgid "Asistent AI"
+msgstr "ИИ-ассистент"
+
+#: templates/dashboard.html:14
+msgid "Întrebați asistentul nostru AI orice despre contabilitatea dvs..."
+msgstr ""
+"Спросите нашего ИИ-ассистента о чем угодно, связанном с вашей "
+"бухгалтерией..."
+
+#: templates/dashboard.html:15
+msgid "Scrieți întrebarea dvs. aici..."
+msgstr "Напишите ваш вопрос здесь..."
+
+#: templates/dashboard.html:16
+msgid "Întreabă"
+msgstr "Спросить"
+
+#: templates/dashboard.html:21
+msgid "Venituri Generate"
+msgstr "Сгенерированные доходы"
+
+#: templates/dashboard.html:26
+msgid "Cantitatea de vânzări"
+msgstr "Количество продаж"
+
+#: templates/dashboard.html:32
+msgid "Documente Recente"
+msgstr "Недавние документы"
+
+#: templates/dashboard.html:36 templates/incarcare.html:27
+msgid "Name"
+msgstr "Название"
+
+#: templates/dashboard.html:37 templates/incarcare.html:29
+msgid "Tip Detector"
+msgstr "Тип детектора"
+
+#: templates/dashboard.html:38 templates/incarcare.html:30
+msgid "Status"
+msgstr "Статус"
+
+#: templates/incarcare.html:5 templates/layout.html:17
+msgid "Încărcare și Recunoaștere"
+msgstr "Загрузка и распознавание"
+
+#: templates/incarcare.html:6
+msgid "Adăugați documente noi în sistem"
+msgstr "Добавьте новые документы в систему"
+
+#: templates/incarcare.html:10
+msgid "Trogeți fișierele aici sau căutați pe computer"
+msgstr "Перетащите файлы сюда или найдите на компьютере"
+
+#: templates/incarcare.html:11
+msgid "Formate acceptate: PDF, PNG, JPG"
+msgstr "Поддерживаемые форматы: PDF, PNG, JPG"
+
+#: templates/incarcare.html:15
+msgid "Extract to Excel"
+msgstr "Извлечь в Excel"
+
+#: templates/incarcare.html:18
+msgid "Processing... Please wait."
+msgstr "Обработка... Пожалуйста, подождите."
+
+#: templates/incarcare.html:23
+msgid "Fișiere încărcate"
+msgstr "Загруженные файлы"
+
+#: templates/incarcare.html:28
+msgid "Număr"
+msgstr "Номер"
+
+#: templates/layout.html:15
+msgid "FUNCȚII"
+msgstr "ФУНКЦИИ"
+
+#: templates/layout.html:16
+msgid "Panou de control"
+msgstr "Панель управления"
+
+#: templates/layout.html:18 templates/tipuri_de_documente.html:5
+msgid "Tipuri de documente"
+msgstr "Типы документов"
+
+#: templates/layout.html:19
+msgid "Arhivă Documente"
+msgstr "Архив документов"
+
+#: templates/layout.html:21
+msgid "DATA"
+msgstr "ДАННЫЕ"
+
+#: templates/layout.html:22
+msgid "Contacts Information"
+msgstr "Информация о контактах"
+
+#: templates/layout.html:23
+msgid "Invoices Balances"
+msgstr "Балансы счетов"
+
+#: templates/layout.html:25
+msgid "PAGES"
+msgstr "СТРАНИЦЫ"
+
+#: templates/layout.html:26
+msgid "Profile Form"
+msgstr "Форма профиля"
+
+#: templates/tipuri_de_documente.html:6
+msgid "Prezentare generală a tuturor categoriilor"
+msgstr "Обзор всех категорий"
+
+#: templates/tipuri_de_documente.html:20
+msgid "Смотреть все"
+msgstr "Смотреть все"
+
+#: venv/lib/python3.13/site-packages/click/_termui_impl.py:600
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/_termui_impl.py:604
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:1084
+#: venv/lib/python3.13/site-packages/click/core.py:1121
+#, python-brace-format
+msgid "{text} {deprecated_message}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:1140
+msgid "Options"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:1202
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:1221
+#, python-brace-format
+msgid "DeprecationWarning: The command {name!r} is deprecated.{extra_message}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:1405
+msgid "Aborted!"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:1779
+msgid "Commands"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:1810
+msgid "Missing command."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:1888
+#, python-brace-format
+msgid "No such command {name!r}."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:2303
+msgid "Value must be an iterable."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:2324
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:2404
+#, python-brace-format
+msgid ""
+"DeprecationWarning: The {param_type} {name!r} is "
+"deprecated.{extra_message}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:2807
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:2810
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:2814
+msgid "required"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/core.py:2870
+msgid "(dynamic)"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/decorators.py:465
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/decorators.py:522
+msgid "Show the version and exit."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/decorators.py:548
+msgid "Show this message and exit."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:50
+#: venv/lib/python3.13/site-packages/click/exceptions.py:89
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:81
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:130
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:132
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:190
+msgid "Missing argument"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:192
+msgid "Missing option"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:194
+msgid "Missing parameter"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:196
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:203
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:223
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:235
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:282
+msgid "unknown error"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:289
+#, python-brace-format
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/formatting.py:156
+msgid "Usage:"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/parser.py:200
+#, python-brace-format
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/parser.py:383
+#, python-brace-format
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/parser.py:444
+#, python-brace-format
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: venv/lib/python3.13/site-packages/click/shell_completion.py:326
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/shell_completion.py:333
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/termui.py:162
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/termui.py:178
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/termui.py:180
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/termui.py:191
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/termui.py:247
+msgid "Error: invalid input"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/termui.py:866
+msgid "Press any key to continue..."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:332
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:369
+#, python-brace-format
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:460
+#, python-brace-format
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:482
+#, python-brace-format
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:538
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:679
+#, python-brace-format
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:703
+#, python-brace-format
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:893
+msgid "file"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:895
+msgid "directory"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:897
+msgid "path"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:944
+#, python-brace-format
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:953
+#, python-brace-format
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:961
+#, python-brace-format
+msgid "{name} {filename!r} is a directory."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:970
+#, python-brace-format
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:979
+#, python-brace-format
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:988
+#, python-brace-format
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/click/types.py:1055
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: templates/index.html:89
+msgid "Умная платформа для автоматизации бухгалтерских процессов в Молдове"
+msgstr "Умная платформа для автоматизации бухгалтерских процессов в Молдове"
+
+#: templates/index.html:95
+msgid "Начать работу"
+msgstr "Начать работу"
+
+#: templates/index.html:98
+msgid "Загрузить документы"
+msgstr "Загрузить документы"
+
+#: templates/index.html:105
+msgid "ИИ-Ассистент"
+msgstr "ИИ-Ассистент"
+
+#: templates/index.html:107
+msgid "Получите мгновенные ответы на вопросы по бухгалтерии и налоговому законодательству Молдовы"
+msgstr "Получите мгновенные ответы на вопросы по бухгалтерии и налоговому законодательству Молдовы"
+
+#: templates/index.html:113
+msgid "Распознавание документов"
+msgstr "Распознавание документов"
+
+#: templates/index.html:115
+msgid "Автоматическое извлечение данных из изображений и создание Excel-файлов"
+msgstr "Автоматическое извлечение данных из изображений и создание Excel-файлов"
+
+#: templates/index.html:121
+msgid "Многоязычность"
+msgstr "Многоязычность"
+
+#: templates/index.html:123
+msgid "Поддержка румынского и русского языков для удобства пользователей"
+msgstr "Поддержка румынского и русского языков для удобства пользователей"
+
+#: templates/index.html:129
+msgid "Быстрая обработка"
+msgstr "Быстрая обработка"
+
+#: templates/index.html:131
+msgid "Мгновенная обработка документов с использованием передовых технологий ИИ"
+msgstr "Мгновенная обработка документов с использованием передовых технологий ИИ"
+
+#: templates/index.html:145
+msgid "Панель управления"
+msgstr "Панель управления"
+
+#: templates/index.html:146
+msgid "Загрузка"
+msgstr "Загрузка"
+
+#: templates/index.html:147
+msgid "Типы документов"
+msgstr "Типы документов"
+
+#: static/js/main.js:25
+msgid "Пожалуйста, введите вопрос"
+msgstr "Пожалуйста, введите вопрос"
+
+#: static/js/main.js:47
+msgid "Произошла ошибка при получении ответа"
+msgstr "Произошла ошибка при получении ответа"
+
+#: static/js/main.js:50
+msgid "Ошибка сети. Проверьте подключение к интернету."
+msgstr "Ошибка сети. Проверьте подключение к интернету."
+
+#: static/js/main.js:58
+msgid "Обработка..."
+msgstr "Обработка..."
+
+#: static/js/main.js:63
+msgid "Спросить"
+msgstr "Спросить"
+
+#: static/js/main.js:95
+msgid "Пожалуйста, выберите файл для загрузки"
+msgstr "Пожалуйста, выберите файл для загрузки"
+
+#~ msgid "Căutați"
+#~ msgstr "Найти"
+

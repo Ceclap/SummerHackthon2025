@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContaSfera</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">CONTASFERA</div>
+            <nav class="sidebar-nav">
+                <p class="nav-section">{{ _('FUNCȚII') }}</p>
+                <a href="{{ url_for('dashboard') }}" class="nav-item active">{{ _('Panou de control') }}</a>
+                <a href="{{ url_for('incarcare') }}" class="nav-item">{{ _('Încărcare și Recunoaștere') }}</a>
+                <a href="{{ url_for('tipuri_de_documente') }}" class="nav-item">{{ _('Tipuri de documente') }}</a>
+                <a href="#" class="nav-item">{{ _('Arhivă Documente') }}</a>
+
+                <p class="nav-section">{{ _('DATA') }}</p>
+                <a href="#" class="nav-item">{{ _('Contacts Information') }}</a>
+                <a href="#" class="nav-item">{{ _('Invoices Balances') }}</a>
+
+                <p class="nav-section">{{ _('PAGES') }}</p>
+                <a href="#" class="nav-item">{{ _('Profile Form') }}</a>
+            </nav>
+        </aside>
+        <div class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    {# This could be a search bar later #}
+                </div>
+                <div class="header-right">
+                    <div class="lang-switcher">
+                        <a href="{{ url_for('set_language', lang='ro') }}" class="lang-option {% if get_locale() == 'ro' %}active{% endif %}">RO</a>
+                        <a href="{{ url_for('set_language', lang='ru') }}" class="lang-option {% if get_locale() == 'ru' %}active{% endif %}">RU</a>
+                    </div>
+                    <button class="btn-theme">🌙</button>
+                    <div class="user-profile">
+                        <span>V</span>
+                    </div>
+                </div>
+            </header>
+            <main class="content-area">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
