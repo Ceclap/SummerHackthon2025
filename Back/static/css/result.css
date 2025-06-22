@@ -1,0 +1,111 @@
+:root {
+    --result-header-bg: #1c2128;
+}
+
+.result-page {
+    padding: 2rem;
+}
+
+.result-header {
+    padding: 1.5rem;
+    background-color: var(--result-header-bg);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--dark-grey);
+}
+
+.result-header h1 {
+    margin: 0 0 0.5rem 0;
+    color: var(--white);
+    font-size: 1.8rem;
+}
+
+.result-header p {
+    margin: 0;
+    color: var(--light-grey);
+}
+
+.result-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.image-viewer-card,
+.table-editor-card {
+    background-color: var(--black);
+    border-radius: 8px;
+    overflow: hidden; /* To keep image corners rounded */
+}
+
+.image-container {
+    padding: 1rem;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.table-editor-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+#editable-table-wrapper {
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+#editable-table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#editable-table-wrapper th,
+#editable-table-wrapper td {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--dark-grey);
+    text-align: left;
+    color: var(--light-grey);
+}
+
+#editable-table-wrapper th {
+    background-color: var(--result-header-bg);
+    color: var(--white);
+    font-weight: 600;
+}
+
+#editable-table-wrapper td[contenteditable="true"] {
+    background-color: #2a3038;
+    outline: 2px solid transparent;
+    transition: outline-color 0.2s;
+}
+
+#editable-table-wrapper td[contenteditable="true"]:focus {
+    outline-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.delete-row-btn {
+    background: none;
+    border: none;
+    color: #e57373;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.delete-row-btn:hover {
+    color: #f44336;
+} 

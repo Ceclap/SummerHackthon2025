@@ -7,7 +7,6 @@ from flask_babel import Babel, _
 from werkzeug.utils import secure_filename
 import base64
 import openpyxl
-import pandas as pd
 from io import BytesIO
 from dotenv import load_dotenv
 from pdf2image import convert_from_path
@@ -307,38 +306,28 @@ def download(filename):
 
 @app.route('/ask_ai', methods=['POST'])
 def ask_ai():
-    """API для общения с ИИ-ассистентом."""
-    if not client:
-        return jsonify({'error': 'Клиент OpenAI не инициализирован.'}), 500
-
-    question = request.json.get('question')
-    if not question:
-        return jsonify({'error': 'Вопрос не был предоставлен.'}), 400
-
     try:
-        with open('system_prompt.txt', 'r', encoding='utf-8') as f:
-            system_prompt_template = f.read()
-        
-        current_language_name = LANGUAGES.get(get_locale(), 'English')
-        system_prompt = system_prompt_template.format(current_language=current_language_name)
-        
-        completion = client.chat.completions.create(
-            model="gpt-4o",
+        data = request.get_json()
+        question = data.get('question', '')
+        if not question:
+            return jsonify({'answer': 'Пожалуйста, введите вопрос.'}), 400
+
+        # Здесь ваш код обращения к OpenAI
+        response = openai.chat.completions.create(
+            model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": system_prompt},
+                {"role": "system", "content": "Ты ИИ-ассистент бухгалтерии и сайта ContaSfera. Отвечай на вопросы по сайту, бухгалтерии и законам Молдовы простым языком."},
                 {"role": "user", "content": question}
             ],
-            max_tokens=1000,
-            temperature=0.5
+            max_tokens=500
         )
-        answer = completion.choices[0].message.content
+        answer = response.choices[0].message.content.strip()
+        print(f"AI ответ: {answer}")  # Логируем ответ
         return jsonify({'answer': answer})
 
-    except FileNotFoundError:
-        return jsonify({'error': 'Файл с системным промптом (system_prompt.txt) не найден.'}), 500
     except Exception as e:
-        print(f"Ошибка в /ask_ai: {e}\n{traceback.format_exc()}")
-        return jsonify({'error': f'Ошибка при обращении к ИИ-ассистенту: {e}'}), 500
+        print(f"Ошибка в /ask_ai: {e}")
+        return jsonify({'answer': f'Ошибка: {str(e)}'}), 500
 
 @app.route('/classify', methods=['POST'])
 def classify():

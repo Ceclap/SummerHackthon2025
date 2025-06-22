@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>{{ _('Архив документов') }}</h2>
+<div class="archive-list">
+  {% if files %}
+    <ul>
+      {% for file in files %}
+        <li>
+          <a href="{{ file.url }}" target="_blank">{{ file.filename }}</a>
+          <a href="{{ file.url }}" download class="btn btn-sm">{{ _('Скачать') }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>{{ _('Нет загруженных документов') }}</p>
+  {% endif %}
+</div>
+{% endblock %} 
